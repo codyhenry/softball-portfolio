@@ -1,5 +1,6 @@
+import { Bio } from "./features/Bio";
 function App() {
-  return <h1>Hello World</h1>;
+  return <Bio />;
 }
 
 export default App;
