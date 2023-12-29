@@ -26,6 +26,7 @@ export function Bio({
 }: BioProps) {
   return (
     <div>
+      {/* TODO: make the header sticky */}
       <h1>Christina D'Agostino</h1>
       <p>Age:{getAge()}</p>
       <p>Grade:{gradeLevel.get(getAge())}</p>
