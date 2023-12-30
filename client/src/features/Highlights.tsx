@@ -30,7 +30,7 @@ const Carousel = ({
   //left arrow, right arrow, array of videos, if length < 5 do not show arrows
   return (
     <div>
-      {videos.length > 5 && <p onClick={handlePrev}>Prev</p>}
+      {videos.length > 5 && <button onClick={handlePrev}>Prev</button>}
       <ul>
         {getVideoPreviews().map((video, i) => (
           <li key={video}>
@@ -44,7 +44,7 @@ const Carousel = ({
           </li>
         ))}
       </ul>
-      {videos.length > 5 && <p onClick={handleNext}>Next</p>}
+      {videos.length > 5 && <button onClick={handleNext}>Next</button>}
     </div>
   );
 };
@@ -62,7 +62,9 @@ export function Highlights({
   return (
     <div>
       <h1>Highlights</h1>
-      <div id="main-video">{videos[currentIndex]}</div>
+      <div id="main-video" data-testid="main-video">
+        {videos[currentIndex]}
+      </div>
       {videos.length > 1 && (
         <Carousel
           videos={videos}
