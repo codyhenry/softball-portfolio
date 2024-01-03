@@ -7,21 +7,19 @@ interface Header {
 
 interface Table {
   category: string;
-  headers: Array<Header>;
-  stats: { [key: string]: { value: string; best: boolean } };
+  stats: { [key: string]: { full: string; value: string; best: boolean } };
 }
 
 export const getTables = () => {
   const tables = <Table[]>[];
   payload.data.groups.forEach((group) => {
-    const table: Table = { category: "", headers: [], stats: {} };
+    const table: Table = { category: "", stats: {} };
     table.category = group.name!;
     group.subgroups!.forEach((subgroup) => {
       // table headers
-      const tableHeaders = <string[]>[];
+      const tableHeaders = <Header[]>[];
       subgroup.stats.columns.slice(2).forEach((header) => {
-        tableHeaders.push(header.header);
-        table.headers.push({
+        tableHeaders.push({
           abbreviation: header.header,
           full: header.displayName,
         });
@@ -45,8 +43,9 @@ export const getTables = () => {
       });
       // add table stats to object score among the team
       stina.forEach((value, index) => {
-        const key = tableHeaders[index];
-        table.stats[key] = { value, best: value >= best[index] };
+        // const key = table.headers[index].abbreviation;
+        const { abbreviation, full } = tableHeaders[index];
+        table.stats[abbreviation] = { full, value, best: value >= best[index] };
       });
     });
     tables.push(table);
