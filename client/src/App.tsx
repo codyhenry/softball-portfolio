@@ -1,4 +1,5 @@
 import { Bio } from "./features/Bio";
+
 function App() {
   return <Bio />;
 }

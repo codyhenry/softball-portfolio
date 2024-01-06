@@ -31,5 +31,6 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
     "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
   },
 };

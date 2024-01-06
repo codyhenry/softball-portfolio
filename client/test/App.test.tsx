@@ -13,7 +13,7 @@ describe("app", () => {
   it("renders Hello World", () => {
     render(<App />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Hello World",
+      "Hello World"
     );
   });
 });
