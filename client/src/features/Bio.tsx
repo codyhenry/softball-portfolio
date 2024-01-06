@@ -1,10 +1,10 @@
-export const getAge = () => {
-  var today = new Date();
-  var birthDate = new Date(2007, 6, 4);
-  var age = today.getFullYear() - birthDate.getFullYear();
-  var m = today.getMonth() - birthDate.getMonth();
+const getAge = () => {
+  const today = new Date();
+  const birthDate = new Date(2007, 6, 4);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
+    age -= 1;
   }
   return age;
 };
@@ -15,19 +15,17 @@ const gradeLevel = new Map([
   [18, "Senior"],
 ]);
 
-interface BioProps {
-  schools?: Array<{ team: string; position: string; number: number }>;
-}
-
 export function Bio({
   schools = [
     { team: "St. Thomas Aquinas Raiders", position: "SS", number: 10 },
   ],
-}: BioProps) {
+}: {
+  schools?: Array<{ team: string; position: string; number: number }>;
+}) {
   return (
     <div>
       {/* TODO: make the header sticky */}
-      <h1>Christina D'Agostino</h1>
+      <h1>Christina D&aposAgostino</h1>
       <p>Age:{getAge()}</p>
       <p>Grade:{gradeLevel.get(getAge())}</p>
       <table>

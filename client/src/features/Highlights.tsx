@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Carousel = ({
+function Carousel({
   videos,
   current,
   setCurrent,
@@ -8,7 +8,7 @@ const Carousel = ({
   videos: Array<string>;
   current: number;
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
-}) => {
+}) {
   const [videoIndex, setVideoIndex] = useState(current);
   const handleNext = () => setVideoIndex((videoIndex + 1) % videos.length);
   const handlePrev = () =>
@@ -27,14 +27,19 @@ const Carousel = ({
     // Swap current video with selected
     setCurrent(selectedIndex);
   };
-  //left arrow, right arrow, array of videos, if length < 5 do not show arrows
+  // left arrow, right arrow, array of videos, if length < 5 do not show arrows
   return (
     <div>
-      {videos.length > 5 && <button onClick={handlePrev}>Prev</button>}
+      {videos.length > 5 && (
+        <button type="button" onClick={handlePrev}>
+          Prev
+        </button>
+      )}
       <ul>
         {getVideoPreviews().map((video, i) => (
           <li key={video}>
             <button
+              type="button"
               onClick={() => updateVideos((videoIndex + i) % videos.length)}
               disabled={(videoIndex + i) % videos.length === current}
             >
@@ -44,10 +49,14 @@ const Carousel = ({
           </li>
         ))}
       </ul>
-      {videos.length > 5 && <button onClick={handleNext}>Next</button>}
+      {videos.length > 5 && (
+        <button type="button" onClick={handleNext}>
+          Next
+        </button>
+      )}
     </div>
   );
-};
+}
 
 export function Highlights({
   videos = ["red", "blue", "green", "yellow", "purple", "black", "white"],
@@ -55,10 +64,10 @@ export function Highlights({
   videos?: Array<string>;
 }) {
   // get videos from Youtube (up 20 most recent)
-  //show up to 5 mini videos at a time
+  // show up to 5 mini videos at a time
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  //check to see if there is more than 1 video available
+  // check to see if there is more than 1 video available
   return (
     <div>
       <h1>Highlights</h1>
