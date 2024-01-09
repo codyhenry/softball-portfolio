@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
 import { getTables } from "../test/jsonParser";
 
+import { Statistics, Table } from "../types/Types";
+
 // overflowX - scroll (desktop)
 // overflowY - scroll (mobile)
 
 // TODO make a interface file to import from
 
-interface Table {
-  category: string;
-  stats: { [key: string]: { full: string; value: string; best: boolean } };
-}
-
 function StatsTable({
   stats,
   isDesktop,
 }: {
-  stats: { [key: string]: { full: string; value: string; best: boolean } };
+  stats: Statistics;
   isDesktop: boolean;
 }) {
   return (

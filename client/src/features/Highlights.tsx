@@ -1,11 +1,13 @@
 import { useState } from "react";
 
+import { Videos } from "../types/Types";
+
 function Carousel({
   videos,
   current,
   setCurrent,
 }: {
-  videos: Array<string>;
+  videos: Videos;
   current: number;
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
 }) {
@@ -61,7 +63,7 @@ function Carousel({
 export function Highlights({
   videos = ["red", "blue", "green", "yellow", "purple", "black", "white"],
 }: {
-  videos?: Array<string>;
+  videos?: Videos;
 }) {
   // get videos from Youtube (up 20 most recent)
   // show up to 5 mini videos at a time

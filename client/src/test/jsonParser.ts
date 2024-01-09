@@ -1,13 +1,9 @@
 import payload from "./maxPreps.json";
+import { Table } from "../types/Types";
 
 interface Header {
   abbreviation: string;
   full: string;
-}
-
-interface Table {
-  category: string;
-  stats: { [key: string]: { full: string; value: string; best: boolean } };
 }
 
 export const getTables = () => {
