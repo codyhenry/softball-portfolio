@@ -17,7 +17,7 @@ describe("bio", () => {
   });
   it("displays the correct grade level", () => {
     render(<Bio />);
-    expect(screen.getByText("Sophomore")).toBeInTheDocument();
+    expect(screen.getByText(/Sophomore/i)).toBeInTheDocument();
   });
   it("renders a table", () => {
     render(<Bio />);

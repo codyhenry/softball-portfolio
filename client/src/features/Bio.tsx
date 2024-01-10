@@ -25,7 +25,7 @@ export function Bio({
   return (
     <div>
       {/* TODO: make the header sticky */}
-      <h1>Christina D&aposAgostino</h1>
+      <h1>Christina D&apos;Agostino</h1>
       <p>Age:{getAge()}</p>
       <p>Grade:{gradeLevel.get(getAge())}</p>
       <table>
