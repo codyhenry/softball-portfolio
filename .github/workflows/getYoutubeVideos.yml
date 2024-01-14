@@ -1,7 +1,7 @@
 name: Get updated list of youtube videos
 on:
   schedule:
-    - cron: 51 * * * *
+    - cron: "*/5 * * * *"
 jobs:
   refresh-videos:
     runs-on: ubuntu-latest
