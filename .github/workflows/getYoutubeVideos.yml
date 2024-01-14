@@ -5,13 +5,12 @@ on:
 jobs:
   refresh-videos:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./clients/data
+
     steps:
       - uses: actions/checkout@v4
       - name: Get results from YouTube API
         run: 'curl -H "Accept: application/json" --compressed "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCUJYkFyDWcwrf8hED9KUe0w&maxResults=50&order=date&key=${{secrets.KEY}}" -o youtubeVideos.json'
+        working-directory: ./clients/data
 
       - name: Adds the file to the repo
         run: git add .
