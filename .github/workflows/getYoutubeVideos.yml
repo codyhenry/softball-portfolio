@@ -7,8 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name:
-        run: 'curl -H "Accept: application/json" --compressed "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCUJYkFyDWcwrf8hED9KUe0w&maxResults=50&order=date&key=${{secrets.KEY}}" -o client\data\youtubeVideos.json'
+
+      - name: change to client folder
+        run: cd client\data
+
+      - name: Get results from YouTube API
+        run: 'curl -H "Accept: application/json" --compressed "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCUJYkFyDWcwrf8hED9KUe0w&maxResults=50&order=date&key=${{secrets.KEY}}" -o youtubeVideos.json'
 
       - name: Adds the file to the repo
         run: git add .
