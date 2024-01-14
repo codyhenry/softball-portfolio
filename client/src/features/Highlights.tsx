@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { Videos } from "../types/Types";
+import { getYouTubeVideos } from "../functions/youtubeParser";
 
 function Carousel({
   videos,
@@ -12,12 +13,13 @@ function Carousel({
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [videoIndex, setVideoIndex] = useState(current);
+  const [hoveredVideo, setHoveredVideo] = useState<string|null>(null)
   const handleNext = () => setVideoIndex((videoIndex + 1) % videos.length);
   const handlePrev = () =>
     setVideoIndex((videos.length + videoIndex - 1) % videos.length);
 
   const getVideoPreviews = () => {
-    const result = [];
+    const result:Videos = [];
     for (let i = 0; i < Math.min(5, videos.length); i++) {
       const index = (videoIndex + i) % videos.length;
       result.push(videos[index]);
@@ -39,18 +41,21 @@ function Carousel({
       )}
       <ul>
         {getVideoPreviews().map((video, i) => (
-          <li key={video}>
+          <li key={video!.id}>
+            {/* change button shape to circle, clip image */}
             <button
               type="button"
               onClick={() => updateVideos((videoIndex + i) % videos.length)}
+              onMouseEnter={()=>setHoveredVideo(video!.title)}
+              onMouseLeave={()=>setHoveredVideo(null)}
               disabled={(videoIndex + i) % videos.length === current}
             >
-              {/* make this an img */}
-              {video}
+              <img src={video.smallImg}></img>
             </button>
           </li>
         ))}
       </ul>
+      <h3>On Deck: {hoveredVideo}</h3>
       {videos.length > 5 && (
         <button type="button" onClick={handleNext}>
           Next
@@ -60,22 +65,21 @@ function Carousel({
   );
 }
 
-export function Highlights({
-  videos = ["red", "blue", "green", "yellow", "purple", "black", "white"],
-}: {
-  videos?: Videos;
-}) {
-  // get videos from Youtube (up 20 most recent)
-  // show up to 5 mini videos at a time
+export function Highlights() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // check to see if there is more than 1 video available
+  const videos = getYouTubeVideos()
   return (
     <div>
       <h1>Highlights</h1>
-      <div id="main-video" data-testid="main-video">
-        {videos[currentIndex]}
-      </div>
+      {videos?(
+        <>
+        <iframe style={{border:0}} title={videos[currentIndex]!.title} src={`https://www.youtube.com/embed/${videos[currentIndex]!.id}`} loading="lazy"></iframe>
+        <h3>{videos[currentIndex].title}</h3>
+        </>
+      ):(
+        <h3>No videos to display</h3>
+      )}
+      
       {videos.length > 1 && (
         <Carousel
           videos={videos}
