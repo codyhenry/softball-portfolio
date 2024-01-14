@@ -10,11 +10,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get results from YouTube API
         run: |
-          api_response=$('curl -H "Accept: application/json" --compressed "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCUJYkFyDWcwrf8hED9KUe0w&maxResults=50&order=date&key=${{secrets.KEY}}"')
-          echo "response=$api_response" >> "$GITHUB_ENV"
+          {
+            echo 'JSON_RESPONSE<<EOF'
+            curl -H "Accept: application/json" --compressed "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCUJYkFyDWcwrf8hED9KUe0w&maxResults=50&order=date&key=${{secrets.KEY}}"
+            echo EOF
+          } >> "$GITHUB_ENV"
 
       - name: Store response in json file
-        run: echo "$response" > youtubeVideos.json
+        run: echo "$JSON_RESPONSE" > youtubeVideos.json
         working-directory: client/data
 
       - name: Adds the file to the repo
