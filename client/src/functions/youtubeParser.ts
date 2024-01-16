@@ -2,6 +2,7 @@ import payload from "../../data/youtubeVideos.json"
 import { Videos } from "../types/Types"
 
 export const getYouTubeVideos = (): Videos => {
+  if(!payload || !payload.items) return []
   return payload.items.filter((upload)=>upload.id.kind === "youtube#video").map((upload)=>{ return {
     id : upload.id.videoId,
     title : upload.snippet.title,

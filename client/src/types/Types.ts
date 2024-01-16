@@ -17,3 +17,4 @@ export interface Table {
   category: string;
   stats: Statistics;
 }
+

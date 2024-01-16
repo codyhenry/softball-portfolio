@@ -50,7 +50,7 @@ function Carousel({
               onMouseLeave={()=>setHoveredVideo(null)}
               disabled={(videoIndex + i) % videos.length === current}
             >
-              <img src={video.smallImg}></img>
+              <img src={video.smallImg} alt={video.title}></img>
             </button>
           </li>
         ))}
@@ -71,7 +71,7 @@ export function Highlights() {
   return (
     <div>
       <h1>Highlights</h1>
-      {videos?(
+      {videos.length?(
         <>
         <iframe style={{border:0}} title={videos[currentIndex]!.title} src={`https://www.youtube.com/embed/${videos[currentIndex]!.id}`} loading="lazy"></iframe>
         <h3>{videos[currentIndex].title}</h3>

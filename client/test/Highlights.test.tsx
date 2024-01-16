@@ -1,19 +1,57 @@
 import "@testing-library/jest-dom/vitest";
 import { render, screen, within, fireEvent } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi, Mock} from "vitest";
 
 import { Highlights } from "../src/features/Highlights";
+import { getYouTubeVideos } from "../src/functions/youtubeParser";
 
+
+
+vi.mock("../src/functions/youtubeParser")
 describe("Highlights", () => {
+  afterEach(() => {
+    vi.clearAllMocks()
+  })
+
+  const getYouTubeVideosMock = getYouTubeVideos as Mock
+
   const videos = [
-    "green",
-    "yellow",
-    "purple",
-    "black",
-    "white",
-    "orange",
-    "cyan",
-    "pink",
+    {
+      id: 'DGE_QRkqBPg',
+      title: 'Video 1',
+      smallImg: 'https://i.ytimg.com/vi/DGE_QRkqBPg/default.jpg',
+      largeImg: 'https://i.ytimg.com/vi/DGE_QRkqBPg/mqdefault.jpg'
+    },
+    {
+      id: 'MwQ0VkGn9GI',
+      title: 'Video 2',
+      smallImg: 'https://i.ytimg.com/vi/MwQ0VkGn9GI/default.jpg',
+      largeImg: 'https://i.ytimg.com/vi/MwQ0VkGn9GI/mqdefault.jpg'
+    },
+    {
+      id: 'PHa2cXT_m-Y',
+      title: 'Video 3',
+      smallImg: 'https://i.ytimg.com/vi/PHa2cXT_m-Y/default.jpg',
+      largeImg: 'https://i.ytimg.com/vi/PHa2cXT_m-Y/mqdefault.jpg'
+    },
+    {
+      id: 'uP4r8an4fAc',
+      title: 'Video 4',
+      smallImg: 'https://i.ytimg.com/vi/uP4r8an4fAc/default.jpg',
+      largeImg: 'https://i.ytimg.com/vi/uP4r8an4fAc/mqdefault.jpg'
+    },
+    {
+      id: 'C7jLXo-5tFA',
+      title: 'Video 5',
+      smallImg: 'https://i.ytimg.com/vi/C7jLXo-5tFA/default.jpg',
+      largeImg: 'https://i.ytimg.com/vi/C7jLXo-5tFA/mqdefault.jpg'
+    },
+    {
+      id: '9rZ9KCMWGP8',
+      title: 'Video 6',
+      smallImg: 'https://i.ytimg.com/vi/9rZ9KCMWGP8/default.jpg',
+      largeImg: 'https://i.ytimg.com/vi/9rZ9KCMWGP8/mqdefault.jpg'
+    }
   ];
 
   const videoList = () =>
@@ -22,37 +60,63 @@ describe("Highlights", () => {
     within(screen.getByRole("list")).getAllByRole("button");
 
   it("renders 'Highlights' as the header", () => {
+    getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Highlights"
     );
   });
   it("displays the first video in main section", () => {
-    render(<Highlights videos={videos} />);
-    expect(screen.getByTestId("main-video")).toHaveTextContent("green");
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights  />);
+    expect(screen.getByTitle("Video 1")).toBeInTheDocument();
   });
+  it("displays 'No videos to display' if there are no videos",()=>{
+    getYouTubeVideosMock.mockReturnValue([])
+    render(<Highlights  />);
+    expect(screen.queryByTitle("Video 1")).not.toBeInTheDocument();
+    const videoWarning = screen.getAllByRole("heading", {level:3})[0] 
+    expect(videoWarning).toHaveTextContent("No videos to display")
+
+  })
   it("does not have a carousel if there is only one video", () => {
-    render(<Highlights videos={videos.slice(0, 1)} />);
+    getYouTubeVideosMock.mockReturnValue(videos.slice(0,1))
+    render(<Highlights />);
     expect(screen.queryByRole("list")).not.toBeInTheDocument();
   });
   it("displays a list of videos if there is more than one", () => {
-    render(<Highlights videos={videos} />);
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights  />);
     expect(screen.getByRole("list")).toBeInTheDocument();
   });
   it("renders a button for each video", () => {
-    render(<Highlights videos={videos} />);
+    getYouTubeVideosMock.mockReturnValue(videos.slice(0,6))
+    render(<Highlights  />);
     expect(buttonList()).toHaveLength(5);
   });
   it("displays max 5 videos in carousel", () => {
-    render(<Highlights videos={videos} />);
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights  />);
     expect(videoList()).toHaveLength(5);
   });
+  it("will display the name of the video being hovered in the carousel", () => {
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights  />);
+    const video2Btn = within(screen.getByRole("list")).getByAltText("Video 2");
+    const onDeck = screen.getAllByRole("heading", { level: 3 })[1] 
+    expect(onDeck).toHaveTextContent(/On Deck:/)
+    fireEvent.mouseEnter(video2Btn)
+    expect(onDeck).toHaveTextContent(/On Deck: Video 2/)
+
+  })
   it("displays all videos if there are less than 5", () => {
-    render(<Highlights videos={videos.slice(0, 3)} />);
+    getYouTubeVideosMock.mockReturnValue(videos.slice(0,3))
+    render(<Highlights />);
     expect(videoList()).toHaveLength(3);
   });
   it("does not have arrow buttons if there are less than 6 videos", () => {
-    render(<Highlights videos={videos.slice(0, 5)} />);
+    getYouTubeVideosMock.mockReturnValue(videos.slice(0,5))
+    render(<Highlights />);
     expect(
       screen.queryByRole("button", { name: "Prev" })
     ).not.toBeInTheDocument();
@@ -61,37 +125,48 @@ describe("Highlights", () => {
     ).not.toBeInTheDocument();
   });
   it("will switch the main video if another video is clicked", () => {
-    render(<Highlights videos={videos} />);
-    const mainVideo = screen.getByTestId("main-video");
-    expect(mainVideo).toHaveTextContent("green");
-    const purpleButton = within(screen.getByRole("list")).getByRole("button", {
-      name: "purple",
-    });
-    fireEvent.click(purpleButton);
-    expect(mainVideo).toHaveTextContent("purple");
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights  />);
+    expect(screen.getByTitle("Video 1")).toBeInTheDocument();
+    const video2Btn = within(screen.getByRole("list")).getByAltText("Video 2");
+    fireEvent.click(video2Btn);
+    expect(screen.queryByTitle("Video 1")).not.toBeInTheDocument();
+    expect(screen.getByTitle("Video 2")).toBeInTheDocument();
   });
+  it("will display the name of the video that is currently selected",()=>{
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights  />);
+    const titleHeader = screen.getAllByRole("heading", { level: 3 })[0] 
+    expect(titleHeader).toHaveTextContent(
+      "Video 1"
+    );
+  })
   it("will show the 6th video in line if the 'next' button is clicked and there are more than 5 videos", () => {
-    render(<Highlights videos={videos} />);
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights />);
     const nextButton = screen.getByRole("button", { name: "Next" });
     fireEvent.click(nextButton);
-    expect(videoList()[4]).toHaveTextContent("orange");
+    expect(within(videoList()[4]).getByRole("img")).toHaveAccessibleName("Video 6");
   });
   it("will wrap to the first video in line if the 'next' button is clicked on the last video", () => {
-    render(<Highlights videos={videos.slice(0, 6)} />);
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights />);
     const nextButton = screen.getByRole("button", { name: "Next" });
     for (let i = 0; i < 6; i++) {
       fireEvent.click(nextButton);
     }
-    expect(videoList()[0]).toHaveTextContent("green");
+    expect(within(videoList()[0]).getByRole("img")).toHaveAccessibleName("Video 1");
   });
   it("will wrap to the last video in line if the 'prev' button is clicked on the first video", () => {
-    render(<Highlights videos={videos} />);
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights />);
     const nextButton = screen.getByRole("button", { name: "Prev" });
     fireEvent.click(nextButton);
-    expect(videoList()[0]).toHaveTextContent("pink");
+    expect(within(videoList()[0]).getByRole("img")).toHaveAccessibleName("Video 6");
   });
   it("will disable the button of the currently main video", () => {
-    render(<Highlights videos={videos} />);
+    getYouTubeVideosMock.mockReturnValue(videos)
+    render(<Highlights />);
     expect(buttonList()[0]).toBeDisabled();
   });
 });
