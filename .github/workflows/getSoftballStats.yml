@@ -21,4 +21,4 @@ jobs:
         with:
           branch: main
           folder: fetch-api-data-action
-          target-folder: client/data
+          target-folder: client/data/stats

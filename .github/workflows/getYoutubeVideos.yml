@@ -18,7 +18,7 @@ jobs:
 
       - name: Store response in json file
         run: echo "$JSON_RESPONSE" > youtubeVideos.json
-        working-directory: client/data
+        working-directory: client/data/youtube
 
       - name: Adds the file to the repo
         run: git add .
