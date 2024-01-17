@@ -1,0 +1,30 @@
+name: Get updated list of youtube videos
+on:
+  push:
+    branches: [master, main]
+  # schedule:
+  # - cron: 0 0 1 * *
+jobs:
+  refresh-stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get results from MaxPreps
+        run: |
+          {
+            echo 'JSON_RESPONSE<<EOF'
+            curl -H "Accept: application/json" --compressed "https://production.api.maxpreps.com/gatewayweb/react/team-season-player-stats/rollup/v1?teamid=bd12f619-3d60-413e-a9ef-5742cd4a21bb&sportseasonid=1ca63de1-4da1-4fb8-9e2a-040146103fe3"
+            echo EOF
+          } >> "$GITHUB_ENV"
+
+      - name: Store response in json file
+        run: echo "$JSON_RESPONSE" > softballStats.json
+        working-directory: client/data
+
+      - name: Adds the file to the repo
+        run: git add .
+      - name: Commit change to repo
+        run: git -c user.email="${{secrets.EMAIL}}" -c user.name="${{secrets.USERNAME}}" commit -am "Update Softball Stats"
+      - name: Push change to repo
+        run: git push origin main
