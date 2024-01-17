@@ -14,7 +14,7 @@ jobs:
         run: |
           {
             echo 'JSON_RESPONSE<<EOF'
-            curl -H "Accept: application/json" --compressed "https://production.api.maxpreps.com/gatewayweb/react/team-season-player-stats/rollup/v1?teamid=bd12f619-3d60-413e-a9ef-5742cd4a21bb&sportseasonid=1ca63de1-4da1-4fb8-9e2a-040146103fe3"
+            curl "https://production.api.maxpreps.com/gatewayweb/react/team-season-player-stats/rollup/v1?teamid=bd12f619-3d60-413e-a9ef-5742cd4a21bb&sportseasonid=1ca63de1-4da1-4fb8-9e2a-040146103fe3"
             echo EOF
           } >> "$GITHUB_ENV"
 
