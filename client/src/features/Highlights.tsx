@@ -13,13 +13,13 @@ function Carousel({
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [videoIndex, setVideoIndex] = useState(current);
-  const [hoveredVideo, setHoveredVideo] = useState<string|null>(null)
+  const [hoveredVideo, setHoveredVideo] = useState<string | null>(null);
   const handleNext = () => setVideoIndex((videoIndex + 1) % videos.length);
   const handlePrev = () =>
     setVideoIndex((videos.length + videoIndex - 1) % videos.length);
 
   const getVideoPreviews = () => {
-    const result:Videos = [];
+    const result: Videos = [];
     for (let i = 0; i < Math.min(5, videos.length); i++) {
       const index = (videoIndex + i) % videos.length;
       result.push(videos[index]);
@@ -46,11 +46,11 @@ function Carousel({
             <button
               type="button"
               onClick={() => updateVideos((videoIndex + i) % videos.length)}
-              onMouseEnter={()=>setHoveredVideo(video!.title)}
-              onMouseLeave={()=>setHoveredVideo(null)}
+              onMouseEnter={() => setHoveredVideo(video!.title)}
+              onMouseLeave={() => setHoveredVideo(null)}
               disabled={(videoIndex + i) % videos.length === current}
             >
-              <img src={video.smallImg} alt={video.title}></img>
+              <img src={video.smallImg} alt={video.title} />
             </button>
           </li>
         ))}
@@ -67,19 +67,24 @@ function Carousel({
 
 export function Highlights() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const videos = getYouTubeVideos()
+  const videos = getYouTubeVideos();
   return (
     <div>
       <h1>Highlights</h1>
-      {videos.length?(
+      {videos.length ? (
         <>
-        <iframe style={{border:0}} title={videos[currentIndex]!.title} src={`https://www.youtube.com/embed/${videos[currentIndex]!.id}`} loading="lazy"></iframe>
-        <h3>{videos[currentIndex].title}</h3>
+          <iframe
+            style={{ border: 0 }}
+            title={videos[currentIndex]!.title}
+            src={`https://www.youtube.com/embed/${videos[currentIndex]!.id}`}
+            loading="lazy"
+          />
+          <h3>{videos[currentIndex].title}</h3>
         </>
-      ):(
+      ) : (
         <h3>No videos to display</h3>
       )}
-      
+
       {videos.length > 1 && (
         <Carousel
           videos={videos}
