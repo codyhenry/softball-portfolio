@@ -54,10 +54,15 @@ describe("Highlights", () => {
     }
   ];
 
-  const videoList = () =>
-    within(screen.getByRole("list")).getAllByRole("listitem");
+  const videoList = () => screen.getByRole("list")
+  const videoListItems = () =>
+    within(videoList()).getAllByRole("listitem");
   const buttonList = () =>
-    within(screen.getByRole("list")).getAllByRole("button");
+    within(videoList()).getAllByRole("button");
+  const mainVideo = (videoTitle:string) => screen.queryByTitle(videoTitle)
+  const carouselVideoButton = (videoTitle:string) => within(videoList()).getByAltText(videoTitle) 
+  const carouselImage = (carouselIndex:number) => 
+    within(videoListItems()[carouselIndex]).getByRole("img")
 
   it("renders 'Highlights' as the header", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
@@ -69,12 +74,12 @@ describe("Highlights", () => {
   it("displays the first video in main section", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights  />);
-    expect(screen.getByTitle("Video 1")).toBeInTheDocument();
+    expect(mainVideo("Video 1")).toBeInTheDocument();
   });
   it("displays 'No videos to display' if there are no videos",()=>{
     getYouTubeVideosMock.mockReturnValue([])
     render(<Highlights  />);
-    expect(screen.queryByTitle("Video 1")).not.toBeInTheDocument();
+    expect(mainVideo("Video 1")).not.toBeInTheDocument();
     const videoWarning = screen.getAllByRole("heading", {level:3})[0] 
     expect(videoWarning).toHaveTextContent("No videos to display")
 
@@ -87,7 +92,7 @@ describe("Highlights", () => {
   it("displays a list of videos if there is more than one", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights  />);
-    expect(screen.getByRole("list")).toBeInTheDocument();
+    expect(videoList()).toBeInTheDocument();
   });
   it("renders a button for each video", () => {
     getYouTubeVideosMock.mockReturnValue(videos.slice(0,6))
@@ -97,22 +102,21 @@ describe("Highlights", () => {
   it("displays max 5 videos in carousel", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights  />);
-    expect(videoList()).toHaveLength(5);
+    expect(videoListItems()).toHaveLength(5);
   });
   it("will display the name of the video being hovered in the carousel", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights  />);
-    const video2Btn = within(screen.getByRole("list")).getByAltText("Video 2");
     const onDeck = screen.getAllByRole("heading", { level: 3 })[1] 
     expect(onDeck).toHaveTextContent(/On Deck:/)
-    fireEvent.mouseEnter(video2Btn)
+    fireEvent.mouseEnter(carouselVideoButton("Video 2"))
     expect(onDeck).toHaveTextContent(/On Deck: Video 2/)
 
   })
   it("displays all videos if there are less than 5", () => {
     getYouTubeVideosMock.mockReturnValue(videos.slice(0,3))
     render(<Highlights />);
-    expect(videoList()).toHaveLength(3);
+    expect(videoListItems()).toHaveLength(3);
   });
   it("does not have arrow buttons if there are less than 6 videos", () => {
     getYouTubeVideosMock.mockReturnValue(videos.slice(0,5))
@@ -127,26 +131,23 @@ describe("Highlights", () => {
   it("will switch the main video if another video is clicked", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights  />);
-    expect(screen.getByTitle("Video 1")).toBeInTheDocument();
-    const video2Btn = within(screen.getByRole("list")).getByAltText("Video 2");
-    fireEvent.click(video2Btn);
+    expect(mainVideo("Video 1")).toBeInTheDocument();
+    fireEvent.click(carouselVideoButton("Video 2"));
     expect(screen.queryByTitle("Video 1")).not.toBeInTheDocument();
-    expect(screen.getByTitle("Video 2")).toBeInTheDocument();
+    expect(mainVideo("Video 2")).toBeInTheDocument();
   });
   it("will display the name of the video that is currently selected",()=>{
     getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights  />);
     const titleHeader = screen.getAllByRole("heading", { level: 3 })[0] 
-    expect(titleHeader).toHaveTextContent(
-      "Video 1"
-    );
+    expect(titleHeader).toHaveTextContent("Video 1");
   })
   it("will show the 6th video in line if the 'next' button is clicked and there are more than 5 videos", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights />);
     const nextButton = screen.getByRole("button", { name: "Next" });
     fireEvent.click(nextButton);
-    expect(within(videoList()[4]).getByRole("img")).toHaveAccessibleName("Video 6");
+    expect(carouselImage(4)).toHaveAccessibleName("Video 6");
   });
   it("will wrap to the first video in line if the 'next' button is clicked on the last video", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
@@ -155,14 +156,14 @@ describe("Highlights", () => {
     for (let i = 0; i < 6; i++) {
       fireEvent.click(nextButton);
     }
-    expect(within(videoList()[0]).getByRole("img")).toHaveAccessibleName("Video 1");
+    expect(carouselImage(0)).toHaveAccessibleName("Video 1");
   });
   it("will wrap to the last video in line if the 'prev' button is clicked on the first video", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
     render(<Highlights />);
     const nextButton = screen.getByRole("button", { name: "Prev" });
     fireEvent.click(nextButton);
-    expect(within(videoList()[0]).getByRole("img")).toHaveAccessibleName("Video 6");
+    expect(carouselImage(0)).toHaveAccessibleName("Video 6");
   });
   it("will disable the button of the currently main video", () => {
     getYouTubeVideosMock.mockReturnValue(videos)
