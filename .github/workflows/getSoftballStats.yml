@@ -1,9 +1,7 @@
 name: Get updated player stats
 on:
-  push:
-    branches: [master, main]
-  # schedule:
-  # - cron: 0 0 1 * *
+  schedule:
+    - cron: 0 0 1 * *
 jobs:
   refresh-stats:
     runs-on: ubuntu-latest
