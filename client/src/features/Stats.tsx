@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getTables } from "../test/jsonParser";
+import { getStats } from "../functions/statsParser";
 
 import { Statistics, Table } from "../types/Types";
 
@@ -85,7 +85,7 @@ function DesktopStats({ tables }: { tables: Array<Table> }) {
 
 export function Stats() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 990);
-  const tables = getTables();
+  const tables = getStats();
   useEffect(() => {
     window.addEventListener("resize", () =>
       setIsDesktop(window.innerWidth > 990)
