@@ -1,4 +1,4 @@
-import payload from "../../data/youtubeVideos.json";
+import payload from "../../data/youtube/youtubeVideos.json";
 import { Videos } from "../types/Types";
 
 export const getYouTubeVideos = (): Videos => {
