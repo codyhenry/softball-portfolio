@@ -26,6 +26,12 @@ export function Bio({
     <div>
       {/* TODO: make the header sticky */}
       <h1>Christina D&apos;Agostino</h1>
+      <img
+        alt="Softball Player"
+        src="https://d186qibzy406vz.cloudfront.net/profile.jpg"
+        width={300}
+        style={{ clipPath: "circle()" }}
+      />
       <p>Age:{getAge()}</p>
       <p>Grade:{gradeLevel.get(getAge())}</p>
       <table>
