@@ -1,15 +1,151 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "6eglVAfnrsnJ3NTwgzNI6K4z0y8",
+  "etag": "3-PojW6bW0ZQdx6qgr1vQ48hSbw",
   "regionCode": "US",
   "pageInfo": {
-    "totalResults": 8,
-    "resultsPerPage": 7
+    "totalResults": 11,
+    "resultsPerPage": 11
   },
   "items": [
     {
       "kind": "youtube#searchResult",
-      "etag": "oPsDr6G4ruDXeHt7cS-cxnWv6_c",
+      "etag": "i9pcMU-wvKAh7rr9tQgMIhkUykw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "KILcXJHBqfg"
+      },
+      "snippet": {
+        "publishedAt": "2024-08-05T02:39:30Z",
+        "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
+        "title": "Extra Innings - February 27, 2024 vs. Somerset Academy",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/KILcXJHBqfg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/KILcXJHBqfg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/KILcXJHBqfg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Christina D'Agostino",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-08-05T02:39:30Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "HB6uR6pC7hGhJj9lOZsh4DkehCM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "IW7sKiHUJbc"
+      },
+      "snippet": {
+        "publishedAt": "2024-08-05T02:33:31Z",
+        "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
+        "title": "St. Thomas Aquinas Spring 2024 Homeruns",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/IW7sKiHUJbc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/IW7sKiHUJbc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/IW7sKiHUJbc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Christina D'Agostino",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-08-05T02:33:31Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "wN_xzG5Ve8Fio5YBY5bllDSX698",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "mV4I4vMp5OU"
+      },
+      "snippet": {
+        "publishedAt": "2024-06-19T15:23:57Z",
+        "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
+        "title": "District Championship Game Extra Innings - May 2, 2024",
+        "description": "District Championship Game Extra Innings.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/mV4I4vMp5OU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/mV4I4vMp5OU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/mV4I4vMp5OU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Christina D'Agostino",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-06-19T15:23:57Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "nCsCGg1TG8ZBJNNgWxmcdWRmxa0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ezbVMQBd3t4"
+      },
+      "snippet": {
+        "publishedAt": "2024-02-04T19:28:16Z",
+        "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
+        "title": "Slow-motion Swing - February 4, 2024",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ezbVMQBd3t4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ezbVMQBd3t4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ezbVMQBd3t4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Christina D'Agostino",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-02-04T19:28:16Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "e8YzTCxciL1wWNgmgXl_CumSasg",
       "id": {
         "kind": "youtube#video",
         "videoId": "DGE_QRkqBPg"
@@ -17,7 +153,7 @@
       "snippet": {
         "publishedAt": "2024-01-06T23:10:18Z",
         "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
-        "title": "FIU Softball Camp Game - January 6, 2024",
+        "title": "FIU Softball Camp Game Homerun - January 6, 2024",
         "description": "",
         "thumbnails": {
           "default": {
@@ -43,7 +179,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "omKnjGjBuOfExs_A07ISXTsqQvw",
+      "etag": "22urs4YruViUQAI7BOwtcP2oFcM",
       "id": {
         "kind": "youtube#video",
         "videoId": "MwQ0VkGn9GI"
@@ -51,7 +187,7 @@
       "snippet": {
         "publishedAt": "2023-12-30T02:55:11Z",
         "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
-        "title": "Fielding",
+        "title": "Fielding plays 2023 and before",
         "description": "",
         "thumbnails": {
           "default": {
@@ -77,7 +213,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "ar0BXXjhbFaaRjDEJGMrq3RkIso",
+      "etag": "UuAwuazi_cKN6EPObMZzEtIb0JE",
       "id": {
         "kind": "youtube#video",
         "videoId": "PHa2cXT_m-Y"
@@ -111,7 +247,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "tzjReV0MIMB0jUF4W1nedgklW2w",
+      "etag": "Z9ndI_z5xLrYZCv8LGNz6H2s5U0",
       "id": {
         "kind": "youtube#video",
         "videoId": "uP4r8an4fAc"
@@ -119,7 +255,7 @@
       "snippet": {
         "publishedAt": "2023-12-14T03:07:28Z",
         "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
-        "title": "Batting",
+        "title": "Batting Highlights 2023 and before",
         "description": "",
         "thumbnails": {
           "default": {
@@ -145,7 +281,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "QUdY2xaNyQfwYHWx06Yy7vVDkEg",
+      "etag": "_RTuxuThWju-p-dloq4F9mEhfJo",
       "id": {
         "kind": "youtube#video",
         "videoId": "C7jLXo-5tFA"
@@ -179,7 +315,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "x_GllNdTJ937x17uOiQeguFLDL0",
+      "etag": "kbWBCqVVa_Ns7fx-g4CUH1nGZF4",
       "id": {
         "kind": "youtube#video",
         "videoId": "9rZ9KCMWGP8"
@@ -187,7 +323,7 @@
       "snippet": {
         "publishedAt": "2023-12-03T03:21:21Z",
         "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
-        "title": "3 HR vs 3 different teams single day - November 11, 2023",
+        "title": "3 HR vs 3 different teams in a single day - November 11, 2023",
         "description": "",
         "thumbnails": {
           "default": {
@@ -213,7 +349,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "093uBaJGrZ2CkC8CUP9kfpWkUDI",
+      "etag": "osNOq1sDn2kYFHQItExiQXqefUA",
       "id": {
         "kind": "youtube#channel",
         "channelId": "UCUJYkFyDWcwrf8hED9KUe0w"
