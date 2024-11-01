@@ -1,12 +1,80 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "H5QB8J3P2anysC9UVTcBMPjG3_o",
+  "etag": "k82ADzR5LHIQIHoHTmFYMX1GLt0",
   "regionCode": "US",
   "pageInfo": {
-    "totalResults": 11,
-    "resultsPerPage": 11
+    "totalResults": 13,
+    "resultsPerPage": 13
   },
   "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "V2tkwPJjO29UwdbDG2mFDyuLhoY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "cAnbxbnDNX4"
+      },
+      "snippet": {
+        "publishedAt": "2024-10-22T00:15:22Z",
+        "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
+        "title": "Easton Tournament - October 19-20, 2024",
+        "description": "Tournament Highlights.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/cAnbxbnDNX4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/cAnbxbnDNX4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/cAnbxbnDNX4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Christina D'Agostino",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-10-22T00:15:22Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "s5y4MCWmHskYp0UzdvcLucHa25M",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "aDgXdhKqz3g"
+      },
+      "snippet": {
+        "publishedAt": "2024-10-21T20:12:55Z",
+        "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
+        "title": "Nova University Camp - October 13, 2024",
+        "description": "Nova University Camp.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/aDgXdhKqz3g/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/aDgXdhKqz3g/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/aDgXdhKqz3g/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Christina D'Agostino",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-10-21T20:12:55Z"
+      }
+    },
     {
       "kind": "youtube#searchResult",
       "etag": "we0q7HQ_NMO32E842XcWfgrOXQs",
@@ -349,7 +417,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "osNOq1sDn2kYFHQItExiQXqefUA",
+      "etag": "DNTsrY0N2ciCOQrlD5ouF0bmf5g",
       "id": {
         "kind": "youtube#channel",
         "channelId": "UCUJYkFyDWcwrf8hED9KUe0w"
