@@ -1,6 +1,6 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "k82ADzR5LHIQIHoHTmFYMX1GLt0",
+  "etag": "ouYPa5qBLPoViBNZVIWYA30KT28",
   "regionCode": "US",
   "pageInfo": {
     "totalResults": 13,
@@ -77,7 +77,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "we0q7HQ_NMO32E842XcWfgrOXQs",
+      "etag": "YvZvYWwbUjDQYsoERS0XFIDAJOw",
       "id": {
         "kind": "youtube#video",
         "videoId": "KILcXJHBqfg"
@@ -111,7 +111,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "IgH-ffKY-rHJUP7DagdhgmL3Knk",
+      "etag": "0-ytO4Oupvj-eM_TVnEifj0EH6s",
       "id": {
         "kind": "youtube#video",
         "videoId": "IW7sKiHUJbc"
