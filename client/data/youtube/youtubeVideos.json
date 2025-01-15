@@ -1,6 +1,6 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "i8TPmeLXVy_w8_LljaRCELRVUOA",
+  "etag": "qAsBjG1SAtbsSSsGvF_XLBluOgw",
   "regionCode": "US",
   "pageInfo": {
     "totalResults": 13,
@@ -417,7 +417,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "DNTsrY0N2ciCOQrlD5ouF0bmf5g",
+      "etag": "MOtED3ku-4wQAbbWEi3fQCKbn8g",
       "id": {
         "kind": "youtube#channel",
         "channelId": "UCUJYkFyDWcwrf8hED9KUe0w"
@@ -429,13 +429,13 @@
         "description": "",
         "thumbnails": {
           "default": {
-            "url": "https://yt3.ggpht.com/LZCRc7aGeP_NOQb0l3DM_4vuBXQyByyeJ12llvppdMREL3XzEdtGQhvMahFPR7c9BkeJ9WkLJw=s88-c-k-c0xffffffff-no-rj-mo"
+            "url": "https://yt3.ggpht.com/OldzYItbXZoV51PEvnrGsjl2EamdAEvyz9Yx0NO6p_6HWnirHFLx903yIAafqnv0NMh0kfDnKA=s88-c-k-c0xffffffff-no-rj-mo"
           },
           "medium": {
-            "url": "https://yt3.ggpht.com/LZCRc7aGeP_NOQb0l3DM_4vuBXQyByyeJ12llvppdMREL3XzEdtGQhvMahFPR7c9BkeJ9WkLJw=s240-c-k-c0xffffffff-no-rj-mo"
+            "url": "https://yt3.ggpht.com/OldzYItbXZoV51PEvnrGsjl2EamdAEvyz9Yx0NO6p_6HWnirHFLx903yIAafqnv0NMh0kfDnKA=s240-c-k-c0xffffffff-no-rj-mo"
           },
           "high": {
-            "url": "https://yt3.ggpht.com/LZCRc7aGeP_NOQb0l3DM_4vuBXQyByyeJ12llvppdMREL3XzEdtGQhvMahFPR7c9BkeJ9WkLJw=s800-c-k-c0xffffffff-no-rj-mo"
+            "url": "https://yt3.ggpht.com/OldzYItbXZoV51PEvnrGsjl2EamdAEvyz9Yx0NO6p_6HWnirHFLx903yIAafqnv0NMh0kfDnKA=s800-c-k-c0xffffffff-no-rj-mo"
           }
         },
         "channelTitle": "Christina D'Agostino",
