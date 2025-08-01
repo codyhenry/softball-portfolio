@@ -1,12 +1,46 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "tF_lMYvcLkoLccFbqcbBE0xkKnE",
+  "etag": "eqitdYMf29z5gEPRXPpJxjny0_Y",
   "regionCode": "US",
   "pageInfo": {
-    "totalResults": 13,
-    "resultsPerPage": 13
+    "totalResults": 14,
+    "resultsPerPage": 14
   },
   "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Bs132TbQMQC24zp71MNC0X02L3Q",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "EfytPhv0gzk"
+      },
+      "snippet": {
+        "publishedAt": "2025-07-15T21:43:44Z",
+        "channelId": "UCUJYkFyDWcwrf8hED9KUe0w",
+        "title": "Catching Viera Power 50 and West Palm July 2025",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EfytPhv0gzk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EfytPhv0gzk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EfytPhv0gzk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Christina D'Agostino",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-07-15T21:43:44Z"
+      }
+    },
     {
       "kind": "youtube#searchResult",
       "etag": "Yl1eV31I1eVHPnruXCGPGFNT_Yo",
@@ -417,7 +451,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "iGAmkeFuKqEraSqb-ixmXUoBNjI",
+      "etag": "9XJg0qL5O3tDPDpWzGBDaF4A-ZU",
       "id": {
         "kind": "youtube#channel",
         "channelId": "UCUJYkFyDWcwrf8hED9KUe0w"
